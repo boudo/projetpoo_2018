@@ -28,4 +28,9 @@ public enum Terrain {
     {
     	return _couleur;
     }
+
+	public boolean estSol()
+	{
+		return this == Terrain.SOL;
+	}
 }

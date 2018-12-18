@@ -21,7 +21,7 @@ public class WorldBuilder{
 	private WorldBuilder randomTerrain() {
 		for (int x = 0; x < _largeur; x++) {
 			for (int y = 0; y < _hauteur; y++) {
-				_terrain[x][y] = Math.random() < 0.5629 ? Terrain.SOL : Terrain.MUR;
+				_terrain[x][y] = Math.random() < 0.5 ? Terrain.SOL : Terrain.MUR;
 			}
 		}
 		return this;
@@ -36,8 +36,8 @@ public class WorldBuilder{
               int sol = 0;
               int mur = 0;
 
-              for (int ox = -1; ox < 2; ox++) {
-                  for (int oy = -1; oy < 2; oy++) {
+              for (int ox = -1; ox < 4; ox++) {
+                  for (int oy = -1; oy < 4; oy++) {
                    if (x + ox < 0 || x + ox >= _largeur || y + oy < 0
                         || y + oy >= _hauteur)
                        continue;
@@ -56,7 +56,10 @@ public class WorldBuilder{
         return this;
     }
 
-	
+	public WorldBuilder construireTerrain() {
+		return randomTerrain()
+				.lissage(8);
+	}
 //	//Bruit de Perlin
 //	
 //	//Fonction pour interpoler linéairement entre a0 et a1
