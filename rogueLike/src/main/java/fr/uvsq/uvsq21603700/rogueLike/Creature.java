@@ -1,11 +1,12 @@
 package fr.uvsq.uvsq21603700.rogueLike;
 
 import java.awt.Color;
+import java.util.*;
 
 
 public class Creature {
 	
-	private World world;
+	private World _world;
 
     public int x;
     public int y;
@@ -16,34 +17,58 @@ public class Creature {
     
     private CreatureAi _ai;
     
-    private int maxVie;
-    private int vie;
-    private int attackValue; //valeur d'attaque
-    private int defenseValue; //valeur de défense
+    private int _maxVie;
+    private int _vie;
+    private int _attackValue; //valeur d'attaque
+    private int _defenseValue; //valeur de défense
     
     public Creature(World world, char glyph, String nom, Color couleur, int maxVie, int attack, int defense){
-        this.world = world;
-        this._symbole = glyph;
-        this._couleur = couleur;
-        this._nom = nom;
-        this.maxVie = maxVie;
-        this.vie = maxVie;
-        this.attackValue = attack;
-        this.defenseValue = defense;
+        _world = world;
+        _symbole = glyph;
+        _couleur = couleur;
+        _nom = nom;
+        _maxVie = maxVie;
+        _vie = maxVie;
+        _attackValue = attack;
+        _defenseValue = defense;
     }
     
+    public void deplacer(int i, int j) {
+		_ai.deplacer(i,j, _world.getTerrain());
+		
+	}
+    
+	public void miseAjour() {
+		
+			_ai.miseAjour();
+		
+	}
+    
 	
-	public char symbole() { return _symbole; }
-	public Color color() { return _couleur; }
-    public String name() { return _nom; }
-	public int getMaxVie() { return maxVie; }
-	public int getVie() { return vie; }
-	public int attackValue() { return attackValue; }
-	public int defenseValue() { return defenseValue; }
+	public void estMort() 
+	{
+		if(_vie < 0)
+		{
+			_world.mort(this);
+		}
+
+	}
+
+	public char getSymbole() { return _symbole; }
+	public Color getColor() { return _couleur; }
+    public String getName() { return _nom; }
+	public int getMaxVie() { return _maxVie; }
+	public int getVie() { return _vie; }
+	public Terrain[][] getTerWorld() {return _world.getTerrain();}
+	public World getWorld() { return _world; }
+	public int attackValue() { return _attackValue; }
+	public int defenseValue() { return _defenseValue; }
 	public void setCreatureAi(CreatureAi ai) { _ai = ai; }
-	public void setMaxVie(int maxvie) { maxVie = maxvie; }
-	public void setVie(int vie) { maxVie = vie; }
-	public void setAttackValue(int attackvalue) { attackValue = attackvalue; }
-	public void setDefenseValue(int defensevalue) { defenseValue = defensevalue; }
+	public void setMaxVie(int maxvie) { _maxVie = maxvie; }
+	public void setVie(int vie) { _vie = vie; }
+	public void setAttackValue(int attackvalue) { _attackValue = attackvalue; }
+	public void setDefenseValue(int defensevalue) { _defenseValue = defensevalue; }
+
+
 
 }
