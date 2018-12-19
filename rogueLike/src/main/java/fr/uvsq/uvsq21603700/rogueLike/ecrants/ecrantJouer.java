@@ -114,6 +114,12 @@ public class ecrantJouer implements Ecrant {
 		
 	}
 	
+	
+		public void save_world() throws FileNotFoundException, UnsupportedEncodingException {
+		_save=new SavedGame(_world,10,10,_world.getLargeur(),_world.getHauteur());
+	    _save.SaveGame("Saved_game");
+	}
+	
 	public void afficherObjet(AsciiPanel terminal)
 	{
 		String listObjet = "";
