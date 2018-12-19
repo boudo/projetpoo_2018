@@ -62,7 +62,7 @@ public class JoueurAi extends CreatureAi{
      * Activer inteligence AI
      * @param x
      * @param y
-     * @return vrai ou faux
+     * @return vrai si le joueur a reaussi d'attaquer un adversaire et faux sinon
      */
 	public boolean attacker(int x, int y)
 	{
@@ -78,7 +78,9 @@ public class JoueurAi extends CreatureAi{
 		return false;
 		
 	}
-	
+	/**
+	 * permet à un creature de ramasser des objets dans le terrain
+	 */
 	public void ramasser1()
 	{
 		Objet o = null;
@@ -89,7 +91,9 @@ public class JoueurAi extends CreatureAi{
     		_creature.getWorld().ramasser(o);
 		}
 	}
-	
+	/**
+	 * permet d'enregistrer l'utilisation d'une arme ou puissance
+	 */
 	public void utiliser(char c)
 	{
 		_creature.getWorld().utiliser(c);

@@ -29,7 +29,7 @@ public class Creature {
 	 */
 	private String _nom;
 	/**
-	 * le nom de la creature
+	 * creatureAi de la creature
 	 */
     private CreatureAi _ai;
     
@@ -38,7 +38,13 @@ public class Creature {
 	 * les points de vie de la creature
 	 */
     private int _vie;
+    /**
+     * les points d'attaque d'une creature
+     */
     private int _attackValue; //valeur d'attaque
+    /**
+     * les points de defense d'une creature
+     */
     private int _defenseValue; //valeur de défense
     /**
 	 * le constructeur
@@ -53,9 +59,7 @@ public class Creature {
         _attackValue = attack;
         _defenseValue = defense;
     }
-    /**
-	 * la methode qui permet de déplacer une creature
-	 */
+
     
     /**
      * la methode qui permet de déplacer une creature
@@ -68,7 +72,7 @@ public class Creature {
 	}
     
     /**
-     * 
+     * mise a jour des puissances 
      */
 	public void miseAjour() {
 		
@@ -104,12 +108,16 @@ public class Creature {
 	public void setVie(int vie) { _vie = vie; }
 	public void setAttackValue(int attackvalue) { _attackValue = attackvalue; }
 	public void setDefenseValue(int defensevalue) { _defenseValue = defensevalue; }
-
+	/**
+	 * permet à un creature de ramasser des objets dans le terrain
+	 */
 	public void ramasser1() {
 		_ai.ramasser1();
 		
 	}
-
+	/**
+	 * permet d'enregistrer l'utilisation d'une arme ou puissance
+	 */
 	public void utiliser(char c) {
 		_ai.utiliser(c);
 		

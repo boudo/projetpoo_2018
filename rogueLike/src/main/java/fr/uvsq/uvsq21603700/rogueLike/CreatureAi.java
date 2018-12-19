@@ -1,7 +1,11 @@
 package fr.uvsq.uvsq21603700.rogueLike;
 
 import java.util.*;
-
+/**
+ * 
+ * la classe qui implémente les effets d'intelligence des créatures
+ *
+ */
 public class CreatureAi {
 	
 	protected Creature _creature;
@@ -10,7 +14,12 @@ public class CreatureAi {
         _creature = creature;
         _creature.setCreatureAi(this);
     }
-
+/**
+ * déplacer la creature dans le terrain
+ * @param i
+ * @param j
+ * @param terrain
+ */
 	public void deplacer(int i, int j, Terrain[][] terrain) { }
 
 	public void miseAjour() { }

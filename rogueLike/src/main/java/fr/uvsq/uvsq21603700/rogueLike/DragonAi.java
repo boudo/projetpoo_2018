@@ -7,7 +7,11 @@ public class DragonAi extends CreatureAi {
 	
 	private MesCreatures factory;
     private int spreadcount;
- 
+ /**
+  * le constructeur de la classe
+  * @param creature
+  * @param factory
+  */
     public DragonAi(Creature creature, MesCreatures factory) {
         super(creature);
         this.factory = factory;
