@@ -2,8 +2,11 @@ package fr.uvsq.uvsq21603700.rogueLike;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
+/**
+ * Classe représentant un personnage joueur
+ * @author 
+ *
+ */
 public class World {
 	
 	private Terrain[][] _terrain;

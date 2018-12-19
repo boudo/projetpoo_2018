@@ -8,10 +8,17 @@ import static org.junit.Assert.*;
 import java.awt.Color;
 
 public class AppTest {
-	Terrain[][] t = new Terrain[800][600] ;
-	  World w1 = new World(t);
-	  Creature c1 =new Creature(w1,'f',"adversaire",Color.BLUE,60,20,50);
-	  Creature c2 =new Creature(w1,'y',"adversaire",Color.YELLOW,40,30,50);
+	private Terrain[][] t ;
+	private  World w1;
+	private  Creature c1 ;
+	private  Creature c2 ;
+	  @Before
+		public void creationObjets(){
+		  	t = new Terrain[800][600] ;
+		  	w1 = new World(t);
+			c1 = new Creature(w1,'f',"adversaire",Color.BLUE,60,20,50);
+			c2 = new Creature(w1,'y',"adversaire",Color.YELLOW,40,30,50);
+		}
   @Test
   public void testApp() {
     assertTrue(true);
@@ -26,14 +33,12 @@ public class AppTest {
   public void testDeplacement() {
 	  c1.x=10;c1.y=20;
 	 c1.deplacer(100, 50);
-	 assertEquals(110,c1.x);
-	 assertEquals(70,c1.y);
+	 assertEquals(100,c1.x);
+	 assertEquals(50,c1.y);
   }
-  /*
   @Test
-  public void test1{
-		  Terrain[][] t ;
-	  World w1 = new World(t);
-  Creature c=new Creature(w1,'f',"adversaire",Color.BLUE,60,20,50);
-} */
+  public void testColor() {
+	 
+	 assertSame(Color.YELLOW,c2.getColor());
+  }
 }

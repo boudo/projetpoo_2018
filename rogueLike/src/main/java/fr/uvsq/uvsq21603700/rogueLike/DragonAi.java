@@ -1,6 +1,8 @@
 package fr.uvsq.uvsq21603700.rogueLike;
-
-
+/**
+ * Classe représentant un monster qui est un personnage non joueur  
+ *
+ */
 public class DragonAi extends CreatureAi {
 	
 	private MesCreatures factory;

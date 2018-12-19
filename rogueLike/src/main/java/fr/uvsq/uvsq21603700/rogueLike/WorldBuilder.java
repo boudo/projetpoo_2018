@@ -1,6 +1,10 @@
 package fr.uvsq.uvsq21603700.rogueLike;
 
-
+/**
+ * Classe représentant un personnage joueur
+ * 
+ *
+ */
 public class WorldBuilder{
 	
 	private Terrain[][] _terrain;

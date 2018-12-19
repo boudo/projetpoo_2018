@@ -3,7 +3,9 @@ package fr.uvsq.uvsq21603700.rogueLike;
 import java.awt.Color;
 
 import fr.uvsq.uvsq21603700.rogueLike.asciiPanel.*;
-
+/** 
+ *Enumeration qui 
+ */
 
 public enum Terrain {
 	SOL('.', AsciiPanel.brightBlack),

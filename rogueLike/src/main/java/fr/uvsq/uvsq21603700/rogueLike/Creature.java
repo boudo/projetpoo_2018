@@ -2,26 +2,47 @@ package fr.uvsq.uvsq21603700.rogueLike;
 
 import java.awt.Color;
 import java.util.*;
-
+/**
+ * Classe représentant un personnage
+ */
 
 public class Creature {
-	
+	/**
+	 * le monde qui contient tous le personnage et le terrain
+	 */
 	private World _world;
-
+	/**
+	 * la position de la creature dans la fenetre
+	 */
     public int x;
     public int y;
-
+    /**
+	 * le symbole ascii pour représenter l'univers de jeu
+	 */
     private char _symbole;
+    /**
+	 * la couleur d'un element de la creature
+	 */
     private Color _couleur;
+    /**
+	 * le nom de la creature
+	 */
 	private String _nom;
-    
+	/**
+	 * le nom de la creature
+	 */
     private CreatureAi _ai;
     
     private int _maxVie;
+    /**
+	 * les points de vie de la creature
+	 */
     private int _vie;
     private int _attackValue; //valeur d'attaque
     private int _defenseValue; //valeur de défense
-    
+    /**
+	 * le constructeur
+	 */
     public Creature(World world, char glyph, String nom, Color couleur, int maxVie, int attack, int defense){
         _world = world;
         _symbole = glyph;
@@ -32,28 +53,42 @@ public class Creature {
         _attackValue = attack;
         _defenseValue = defense;
     }
+    /**
+	 * la methode qui permet de déplacer une creature
+	 */
     
+    /**
+     * la methode qui permet de déplacer une creature
+     * @param i
+     * @param j
+     */
     public void deplacer(int i, int j) {
 		_ai.deplacer(i,j, _world.getTerrain());
 		
 	}
     
+    /**
+     * 
+     */
 	public void miseAjour() {
 		
 			_ai.miseAjour();
 		
 	}
-    
-	
+	/**
+	 * methode qui vérifie si la creature a autant de points pour vivre 
+	 */
 	public void estMort() 
 	{
-		if(_vie < 0)
+		if(_vie < 1)
 		{
 			_world.mort(this);
 		}
 
 	}
-
+	/**
+	 * les getters et les setters
+	 */
 	public char getSymbole() { return _symbole; }
 	public Color getColor() { return _couleur; }
     public String getName() { return _nom; }

@@ -1,6 +1,9 @@
 package fr.uvsq.uvsq21603700.rogueLike;
 
-
+/**
+ * Classe représentant un combattant(personnage non joueur) contre un personnage joueur
+ *
+ */
 public class SoldaAi extends CreatureAi {
 	
 	 public SoldaAi(Creature creature)

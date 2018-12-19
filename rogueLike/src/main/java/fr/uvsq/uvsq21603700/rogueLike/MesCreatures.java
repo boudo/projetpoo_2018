@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.uvsq.uvsq21603700.rogueLike.asciiPanel.*;
-
+/**
+ * Classe représentant un personnage joueur
+ *
+ */
 
 public class MesCreatures {
 	
