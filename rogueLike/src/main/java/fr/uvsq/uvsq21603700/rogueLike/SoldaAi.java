@@ -54,7 +54,7 @@ public class SoldaAi extends CreatureAi {
     	{
     		return;
     	}
-    	if(!attacker(x, y) &&terrain[x][y].estSol())
+    	if(!attacker(x, y) && terrain[x][y].estSol() && _creature.getWorld().getObjet(x, y) == null)
     	{
     		_creature.x = x;
         	_creature.y = y;

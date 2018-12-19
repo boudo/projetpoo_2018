@@ -59,6 +59,7 @@ public class Creature {
     public String getName() { return _nom; }
 	public int getMaxVie() { return _maxVie; }
 	public int getVie() { return _vie; }
+	public CreatureAi getAi() { return _ai; }
 	public Terrain[][] getTerWorld() {return _world.getTerrain();}
 	public World getWorld() { return _world; }
 	public int attackValue() { return _attackValue; }
@@ -68,6 +69,16 @@ public class Creature {
 	public void setVie(int vie) { _vie = vie; }
 	public void setAttackValue(int attackvalue) { _attackValue = attackvalue; }
 	public void setDefenseValue(int defensevalue) { _defenseValue = defensevalue; }
+
+	public void ramasser1() {
+		_ai.ramasser1();
+		
+	}
+
+	public void utiliser(char c) {
+		_ai.utiliser(c);
+		
+	}
 
 
 

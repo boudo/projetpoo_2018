@@ -1,5 +1,6 @@
 package fr.uvsq.uvsq21603700.rogueLike;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.uvsq.uvsq21603700.rogueLike.asciiPanel.*;
@@ -13,10 +14,10 @@ public class MesCreatures {
         this.world = world;
     }
     
-    public Creature newJoueur(List<String> messages){
+    public Creature newJoueur(List<String> messages, List<Objet> objets){
         Creature player = new Creature(world, '@',"Player", AsciiPanel.brightGreen,100, 20, 5);
         world.emplacementVide(player);
-        new JoueurAi(player, messages);
+        new JoueurAi(player, messages, objets);
         return player;
     }
     
