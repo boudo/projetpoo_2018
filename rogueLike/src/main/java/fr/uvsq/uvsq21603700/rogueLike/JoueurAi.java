@@ -1,15 +1,17 @@
 package fr.uvsq.uvsq21603700.rogueLike;
 
-import java.util.List;
+import java.util.*;
 
 
 public class JoueurAi extends CreatureAi{
 	
 	private List<String> _messages;
+	protected List<Objet> _objets;
 
-    public JoueurAi(Creature creature, List<String> messages) {
+    public JoueurAi(Creature creature, List<String> messages, List<Objet> objets) {
     super(creature);
     _messages = messages;
+    _objets = objets;
     }
     
     public void deplacer(int i, int j, Terrain[][] terrain)
@@ -21,6 +23,11 @@ public class JoueurAi extends CreatureAi{
     		return;
     	}
     	
+//    	if(estObjet(x, y))
+//    	{
+//    		ramasser(x,y);
+//    	}
+    	
     	if(!attacker(x, y) && terrain[x][y].estSol())
     	{
     		//attacker(x, y);
@@ -31,7 +38,27 @@ public class JoueurAi extends CreatureAi{
     	
     }
     
-    /**
+//    private void ramasser(int x, int y) {
+//    	Objet o = _creature.getWorld().getObjet(x, y);
+//    	if(o != null)
+//    	{
+//    		_objets.add(o);
+//    		_creature.getWorld().ramasser(o);
+//    	}
+//		
+//	}
+//
+//	private boolean estObjet(int x, int y) {
+//		World world = _creature.getWorld();
+//		Objet objet = world.getObjet(x, y);
+//		if(objet != null)
+//		{
+//			return true;
+//		}
+//		return false;
+//	}
+
+	/**
      * Activer inteligence AI
      * @param x
      * @param y
@@ -50,6 +77,22 @@ public class JoueurAi extends CreatureAi{
 		}
 		return false;
 		
+	}
+	
+	public void ramasser1()
+	{
+		Objet o = null;
+		o = _creature.getWorld().getObjet(_creature.x , _creature.y);
+		if( o != null)
+		{
+			_objets.add(o);
+    		_creature.getWorld().ramasser(o);
+		}
+	}
+	
+	public void utiliser(char c)
+	{
+		_creature.getWorld().utiliser(c);
 	}
 //    
 //    /**

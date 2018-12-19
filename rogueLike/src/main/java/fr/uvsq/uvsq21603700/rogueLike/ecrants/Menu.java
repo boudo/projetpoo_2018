@@ -42,7 +42,11 @@ public class Menu implements Ecrant {
 		case KeyEvent.VK_DOWN:
 			_selection = (_selection + 1 ) % 3; return this;
 		case KeyEvent.VK_UP:
-			_selection = (_selection - 1 ) % 3; return this;
+			if(_selection > 0)
+			{
+				_selection = (_selection - 1 ) % 3; return this;
+			}
+			return this;
 		
 		case KeyEvent.VK_ENTER:
 			switch(_selection)

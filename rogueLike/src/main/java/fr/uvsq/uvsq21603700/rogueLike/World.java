@@ -10,12 +10,14 @@ public class World {
     private int _largeur;
     private int _hauteur;
     private List<Creature> _creatures;
+    private List<Objet> _objets;
     
     public World(Terrain[][] terrain){
 		_terrain = terrain;
 		_largeur = terrain.length;
 		_hauteur = terrain[0].length;
 		_creatures = new ArrayList<Creature>();
+		_objets = new ArrayList<Objet>();
 	}
     
     public Terrain elemenTerrain(int x, int y){
@@ -67,6 +69,11 @@ public class World {
 	{
 		return _creatures;
 	}
+	
+	public List<Objet> getListObjet()
+	{
+		return _objets;
+	}
 
 	public void miseAjour()
 	{	
@@ -76,6 +83,27 @@ public class World {
 			c.miseAjour();
 			
 		}
+	}
+	
+	public void emplacementObjet(Objet pioche) {
+		int x;
+		int y;
+		
+		do {
+			x = (int)(Math.random() * _largeur);
+			y = (int)(Math.random() * _hauteur);
+		} 
+		while (!elemenTerrain(x,y).estSol() || creature(x,y) != null);
+		
+		pioche.x = x;
+		pioche.y = y;
+		_objets.add(pioche);
+		
+	}
+	
+	public void ramasser(Objet o)
+	{
+		_objets.remove(o);
 	}
 
 	public Terrain[][] getTerrain() {
@@ -89,6 +117,29 @@ public class World {
 	public int getHauteur()
 	{
 		return _hauteur;
+	}
+
+	public Objet getObjet(int x, int y) {
+		for(Objet o : _objets)
+		{
+			if(o.x == x && o.y == y)
+			{
+				return o;
+			}
+		}
+		return null;
+	}
+
+	public void utiliser(char c)
+	{
+		for(Objet o : _objets)
+		{
+			if(o.getSymbole() == c)
+			{
+				_objets.remove(o);
+				break;
+			}
+		}
 	}
 
 	
