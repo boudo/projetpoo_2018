@@ -33,5 +33,27 @@ public class SavedGame {
 			this.height = 0;
 		}
 	
+			public void SaveGame(String name) throws FileNotFoundException, UnsupportedEncodingException{
+	
+		String path = System.getProperty("user.home") + File.separator + ".savedRlGames" + File.separator + name;
+		System.out.println("saved to: " + path);
+		File f = new File(path);
+		if(!f.getParentFile().isDirectory())
+			f.getParentFile().mkdirs();
+		if(f.exists()) {
+			throw new FileNotFoundException();
+		}
+		PrintWriter writer = new PrintWriter(path, "UTF-8");
+		writer.print(width+" "+height+"\n");
+		writer.print(centerX+" "+centerY+"\n");
+		for(int i=0; i<width; i++) {
+			for(int j=0; j<height; j++) {
+				writer.print(world.glyph(i, j)+" ");
+			}
+			writer.print("\n");
+		}
+		writer.close();
+	}
+		
 
 }
