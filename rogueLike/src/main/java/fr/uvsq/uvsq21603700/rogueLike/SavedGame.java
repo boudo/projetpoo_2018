@@ -59,6 +59,48 @@ public class SavedGame {
 		this.centerX = centerX;
 		this.centerY = centerY;
 	}
+	
+	public SavedGame loadGame(String path) throws IOException {
+		Terrain[][] tiles = null;
+		File file = new File(path);
+		System.out.println("je vais importé le fichier sauvgarde");
+
+		BufferedReader br = new BufferedReader(new FileReader(file));
+		int width = 0, height = 0, cX = 0, cY = 0;
+		String line;
+			if((line = br.readLine())!=null) {
+				String[] s = line.split(" ");
+				width = Integer.parseInt(s[0]);
+				height = Integer.parseInt(s[1]);
+				System.out.println("taille matrice="+width+height);
+			}
+			tiles = new Terrain[width][height];
+			if((line = br.readLine())!=null) {
+				String[] s = line.split(" ");
+				cX = Integer.parseInt(s[0]);
+				cY = Integer.parseInt(s[1]);
+			}
+			
+			for(int i=0; i<height; i++) {
+		 System.out.println("je remplie la ligne "+i);
+				if((line = br.readLine())!=null) {
+					String[] s = line.split(" ");
+					for(int j=0; j<width; j++) {
+						System.out.println("je remplie le tableau avec la colone "+j);
+
+						char glyph = s[j].charAt(0);
+						switch(glyph) {
+						case '.': tiles[i][j] = Terrain.SOL; break;
+						case '#': tiles[i][j] = Terrain.MUR; break;
+						default:  tiles[i][j] = Terrain.VIDE;
+						}
+					}
+				}
+			}
+		   System.out.println("J'ai tout fini");
+           br.close();
+		   return new SavedGame(new World(tiles), cX,cY, width, height);
+	}
 		
 
 }
