@@ -54,6 +54,11 @@ public class SavedGame {
 		}
 		writer.close();
 	}
+	
+		public void update(int centerX, int centerY) {
+		this.centerX = centerX;
+		this.centerY = centerY;
+	}
 		
 
 }
