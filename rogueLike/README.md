@@ -2,7 +2,7 @@
 
 Projet du Semestre 1 du Master informatique de l'Université Versailles-Saint-Quentin.
 
-## A propos de jeu 
+## Manuel utilisateur 
 
 Ce programme est un jeu de type Rogue Like qui permet d'implémenter des terrains de jeu d'une manière aléatoire après la morte d'une personne joueur 
 et aussi quand il le veut un utilisateur en appuyant sur "Entree" 
