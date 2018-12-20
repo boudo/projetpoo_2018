@@ -7,7 +7,10 @@ import java.util.List;
 import fr.uvsq.uvsq21603700.rogueLike.*;
 import fr.uvsq.uvsq21603700.rogueLike.asciiPanel.*;
 
-
+/**
+ * classe qui définit la fenetre permettant de visualiser l'univers de jeu
+ *
+ */
 
 public class ecrantJouer implements Ecrant {
 	private World _world;
@@ -16,7 +19,9 @@ public class ecrantJouer implements Ecrant {
     private int _hauteur;
     private List<String> _messages;
     private List<Objet> _objets;
-    
+    /**
+     * Constructeur
+     */
     public ecrantJouer()
     {
     	_largeur = 205;
@@ -25,7 +30,9 @@ public class ecrantJouer implements Ecrant {
     	_objets = new ArrayList<Objet>();
     	creerWorld();
     }
-    
+    /**
+     * creer les elements de jeu 
+     */
     public void creerWorld()
     {
     	_world = new WorldBuilder(_largeur-30, _hauteur-10)
@@ -75,7 +82,10 @@ public class ecrantJouer implements Ecrant {
 		terminal.write("JOUER", 1, 1, new Color(0,0,255));
 		
 	}
-	
+	/**
+	 * creer un creature dans la fenetre
+	 * @param creatures
+	 */
 	public void creerCreature(MesCreatures creatures)
 	{
 		_player = creatures.newJoueur(_messages, _objets);
@@ -113,7 +123,10 @@ public class ecrantJouer implements Ecrant {
 		}
 		
 	}
-	
+	/**
+	 * creer un objet sur le terrain de jeu
+	 * @param terminal
+	 */
 	public void afficherObjet(AsciiPanel terminal)
 	{
 		String listObjet = "";
@@ -125,7 +138,9 @@ public class ecrantJouer implements Ecrant {
 	        terminal.write(listObjet, _world.getLargeur()+2, i+4, AsciiPanel.brightRed, AsciiPanel.brightWhite);
 		}
 	}
-
+	/**
+	 * permet de produire des reactions apres les saisies utilisateur
+	 */
 	public Ecrant saisieUtilisateur(KeyEvent saisie) {
 		switch (saisie.getKeyCode()){
 //      case KeyEvent.VK_ESCAPE: return new LoseScreen();
