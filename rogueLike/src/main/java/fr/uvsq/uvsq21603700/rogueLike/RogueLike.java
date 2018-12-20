@@ -45,6 +45,16 @@ public class RogueLike extends JFrame implements KeyListener {
         _ecrant = _ecrant.saisieUtilisateur(e);
         repaint();
     }
+    
+    public AsciiPanel getTerminal()
+    {
+    	return _terminal;
+    }
+    
+    public Ecrant getEcrant()
+    {
+    	return _ecrant;
+    }
 
     public void keyReleased(KeyEvent e) { }
 
