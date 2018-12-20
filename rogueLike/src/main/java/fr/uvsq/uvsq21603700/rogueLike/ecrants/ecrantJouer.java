@@ -12,6 +12,7 @@ import fr.uvsq.uvsq21603700.rogueLike.asciiPanel.*;
 public class ecrantJouer implements Ecrant {
 	private World _world;
 	private Creature _player;
+	private Objet _porte;
     private int _largeur;
     private int _hauteur;
     private List<String> _messages;
@@ -42,9 +43,13 @@ public class ecrantJouer implements Ecrant {
 		
 		afficherTerrain(terminal);
 		afficherObjet(terminal);
-		terminal.write(" "+_player.x +" / "+_player.y+" ",  _world.getLargeur()+2, 2, AsciiPanel.brightBlue,
+		terminal.write(" "+_player.x +" / "+_player.y+"                ",  _world.getLargeur()+2, 2, AsciiPanel.brightBlue,
 				AsciiPanel.brightWhite);
-        String stats = String.format(" %3d/%3d Vie", _player.getVie(), _player.getMaxVie());
+		terminal.write(" Valeur attack "+_player.getAttackValue() +" points",  _world.getLargeur()+2, 3, AsciiPanel.brightBlue,
+				AsciiPanel.brightWhite);
+		terminal.write(" Valeur defense "+_player.getDefenseValue() +" points",  _world.getLargeur()+2, 4, AsciiPanel.brightBlue,
+				AsciiPanel.brightWhite);
+        String stats = String.format(" %3d/%3d Vie            ", _player.getVie(), _player.getMaxVie());
         terminal.write(stats, _world.getLargeur()+2, 1,Color.red,Color.white);
         //displayMessages(terminal, messages);
         String save = "-- press U pour sauvegarger la partie --";
@@ -72,7 +77,7 @@ public class ecrantJouer implements Ecrant {
 			terminal.write(o.getSymbole(), o.x, o.y, o.getCouleur());
 		}
 		
-		terminal.write("JOUER", 1, 1, new Color(0,0,255));
+		//terminal.write("JOUER", 1, 1, new Color(0,0,255));
 		
 	}
 	
@@ -91,10 +96,13 @@ public class ecrantJouer implements Ecrant {
 		{
 			creatures.newDragon();
 		}
+		
 	}
 	
 	private void creerObjet(MesObjets objets)
 	{
+		_porte = objets.newPorte();
+		
 		int pomme = (int)(Math.random() * 3)+5;
 		int epe = (int)(Math.random() * 2)+3;
 		int pioche = (int)(Math.random() * 3)+2;
@@ -122,14 +130,23 @@ public class ecrantJouer implements Ecrant {
 		{
 			o = _objets.get(i);
 			listObjet = String.format("%c : %s",o.getSymbole(), o.getNom());
-	        terminal.write(listObjet, _world.getLargeur()+2, i+4, AsciiPanel.brightRed, AsciiPanel.brightWhite);
+	        terminal.write(listObjet, _world.getLargeur()+2, i+6, AsciiPanel.brightRed, AsciiPanel.brightWhite);
 		}
+	}
+	
+	private boolean entrerPort(Creature player) {
+		return player.x == _porte.x && player.y == _porte.y;
 	}
 
 	public Ecrant saisieUtilisateur(KeyEvent saisie) {
 		switch (saisie.getKeyCode()){
 //      case KeyEvent.VK_ESCAPE: return new LoseScreen();
-      case KeyEvent.VK_ENTER: return new ecrantJouer();
+      case KeyEvent.VK_ENTER: 
+    	  if(entrerPort(_player))
+    		  {
+    		  	return new ecrantJouer();
+    		  }
+    	  break;
 //      case KeyEvent.VK_U: save("moha.txt"); break;
 //      case KeyEvent.VK_N: save("moha.txt"); return new MenuScreen();
       case KeyEvent.VK_LEFT:
@@ -144,7 +161,7 @@ public class ecrantJouer implements Ecrant {
       case KeyEvent.VK_E: _player.deplacer( 1,-1); break;
       case KeyEvent.VK_W: _player.deplacer(-1, 1); break;
       case KeyEvent.VK_X: _player.deplacer( 1, 1); break;
-      case KeyEvent.VK_R: _player.ramasser1(); break;
+      case KeyEvent.VK_R: _player.ramasser(); break;
       
 //      default : return this;
       }
@@ -157,11 +174,12 @@ public class ecrantJouer implements Ecrant {
 		_world.miseAjour();
 		if(_player.getVie() <= 0)
 		{
-			return new Menu();
+			return new GameOver();
 		}
 		return this;
 		
 	}
+
 	
 
 }

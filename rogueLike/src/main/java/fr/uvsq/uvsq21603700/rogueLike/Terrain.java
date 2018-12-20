@@ -33,4 +33,8 @@ public enum Terrain {
 	{
 		return this == Terrain.SOL;
 	}
+
+	public boolean estMur() {
+		return this == Terrain.MUR;
+	}
 }

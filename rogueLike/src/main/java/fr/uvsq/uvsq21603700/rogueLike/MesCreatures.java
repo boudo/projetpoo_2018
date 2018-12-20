@@ -1,6 +1,6 @@
 package fr.uvsq.uvsq21603700.rogueLike;
 
-import java.util.ArrayList;
+import java.awt.Color;
 import java.util.List;
 
 import fr.uvsq.uvsq21603700.rogueLike.asciiPanel.*;
@@ -29,7 +29,7 @@ public class MesCreatures {
 	}
 	
 	public Creature newSoldat(){
-	    Creature soldat = new Creature(world, 'b', "bat", AsciiPanel.brightYellow, 15, 5, 0);
+	    Creature soldat = new Creature(world, 'b', "bat", new Color(96, 80, 220), 30, 10, 5);
 	    world.emplacementVide(soldat);
 	    new SoldaAi(soldat);
 	    return soldat;
