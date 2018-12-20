@@ -13,7 +13,9 @@ public class JoueurAi extends CreatureAi{
     _messages = messages;
     _objets = objets;
     }
-    
+    /**
+     * Déplacer un joueur sur le terrain
+     */
     public void deplacer(int i, int j, Terrain[][] terrain)
     {
     	int x = _creature.x+i;
