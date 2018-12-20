@@ -28,7 +28,7 @@ public class SoldaAi extends CreatureAi {
 			my = (int)(Math.random() * 3) -1;
 			x = _creature.x+mx;
 	    	y = _creature.y+my;
-	    	System.out.println(x+" et "+y);
+	    	//System.out.println(x+" et "+y);
 	    	if(0 > x || x >= terrain.length || 0 > y ||  y >= terrain[0].length)
 	    	{
 	    		bool = false;
@@ -38,7 +38,7 @@ public class SoldaAi extends CreatureAi {
 	    		if(terrain[x][y] == Terrain.SOL)
 	    		{
 	    			bool = false;
-	    			System.out.println(terrain[x][y].getSymbole());
+	    			//System.out.println(terrain[x][y].getSymbole());
 	    		}
 	    	}
 		}
@@ -67,7 +67,7 @@ public class SoldaAi extends CreatureAi {
 		ennemi = _creature.getWorld().creature(x, y);
 		if(ennemi != null && ennemi.getSymbole() == '@')
 		{
-			ennemi.setVie(ennemi.defenseValue() - (int)(Math.random() * _creature.attackValue()+1));
+			ennemi.setVie(ennemi.getDefenseValue() - (int)(Math.random() * _creature.getAttackValue()+1));
 			ennemi.estMort();
 			return true;
 		}
