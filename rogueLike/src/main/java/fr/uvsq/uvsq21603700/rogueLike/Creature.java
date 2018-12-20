@@ -1,7 +1,7 @@
 package fr.uvsq.uvsq21603700.rogueLike;
 
 import java.awt.Color;
-import java.util.*;
+
 
 
 public class Creature {
@@ -62,16 +62,16 @@ public class Creature {
 	public CreatureAi getAi() { return _ai; }
 	public Terrain[][] getTerWorld() {return _world.getTerrain();}
 	public World getWorld() { return _world; }
-	public int attackValue() { return _attackValue; }
-	public int defenseValue() { return _defenseValue; }
+	public int getAttackValue() { return _attackValue; }
+	public int getDefenseValue() { return _defenseValue; }
 	public void setCreatureAi(CreatureAi ai) { _ai = ai; }
 	public void setMaxVie(int maxvie) { _maxVie = maxvie; }
-	public void setVie(int vie) { _vie = vie; }
+	public void setVie(int vie) { if(vie > _maxVie) {_vie = _maxVie;} else {_vie =  vie;} }
 	public void setAttackValue(int attackvalue) { _attackValue = attackvalue; }
 	public void setDefenseValue(int defensevalue) { _defenseValue = defensevalue; }
 
-	public void ramasser1() {
-		_ai.ramasser1();
+	public void ramasser() {
+		_ai.ramasser();
 		
 	}
 
@@ -79,6 +79,8 @@ public class Creature {
 		_ai.utiliser(c);
 		
 	}
+
+
 
 
 

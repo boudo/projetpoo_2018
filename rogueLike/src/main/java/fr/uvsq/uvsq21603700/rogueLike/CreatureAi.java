@@ -1,6 +1,5 @@
 package fr.uvsq.uvsq21603700.rogueLike;
 
-import java.util.*;
 
 public class CreatureAi {
 	
@@ -15,9 +14,10 @@ public class CreatureAi {
 
 	public void miseAjour() { }
 
-	public void ramasser1() { }
+	public void ramasser() { }
 
 	public void utiliser(char c) { }
+
 	
 //	public void attacker(int x, int y) { }
 
