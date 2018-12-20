@@ -14,9 +14,10 @@ Il implémente aussi des fonctionalités de sauvegarde et chargement de jeu à t
 Java 1.8 est nécessaire au bon fonctionnement de cette application.
 
 Aide pour lancer le jeu :
-	-mvn compile: compile le projet .
-	-mvn package génère le fichier exécutable jar
-	-mvn clean: nettoye le résultat des précédentes compilations, cette option supprime aussi le fichier jar.
+	-mvn package
+	-java -jar target/rogueLike-0.0.1-SNAPSHOT
+
+	
 	
 Vous pouvez également lancer le programme en executant le fichier "rogueLike-0.0.1-SNAPSHOT.jar", une fois le projet compilé ou le lancer depuis le terminal
 en utilisant la commande : java -jar rogueLike-0.0.1-SNAPSHOT
