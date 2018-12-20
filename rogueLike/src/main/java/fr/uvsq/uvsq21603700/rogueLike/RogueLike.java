@@ -34,23 +34,35 @@ public class RogueLike extends JFrame implements KeyListener {
         addKeyListener(this);
         repaint();
     }
-
+	/**
+	 * dessiner à nouveau l'univers de jeu
+	 */
     public void repaint(){
         _terminal.clear();
         _ecrant.afficher(_terminal);
         super.repaint();
     }
-
+    /**
+     * fait appel aux evenements liés à un clic touche sur le clavier
+     */
     public void keyPressed(KeyEvent e) {
         _ecrant = _ecrant.saisieUtilisateur(e);
         repaint();
     }
     
+    /**
+     * 
+     * @return le terminal
+     */
     public AsciiPanel getTerminal()
     {
     	return _terminal;
     }
     
+    /**
+     * 
+     * @return l'ecrant
+     */
     public Ecrant getEcrant()
     {
     	return _ecrant;

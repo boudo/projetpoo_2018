@@ -3,7 +3,7 @@ package fr.uvsq.uvsq21603700.rogueLike;
 import javax.swing.JFrame;
 
 /**
- * Hello world!
+ * classe principale 
  *
  */
 public class App 

@@ -4,11 +4,16 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 import fr.uvsq.uvsq21603700.rogueLike.asciiPanel.*;
-
+/**
+ * Classe qui implémente le menu qui contient les fonctionnalités de jeu 
+ *
+ */
 public class Menu implements Ecrant {
 	
 	private int _selection = 0;
-
+/**
+ * methode affichant les choix possibles d'un utilisateur pour gerer un jeu
+ */
 	public void afficher(AsciiPanel terminal) {
 		terminal.write("MENU", 1, 1, new Color(0,0,255));
 		if(_selection == 0) {
@@ -34,7 +39,9 @@ public class Menu implements Ecrant {
 	    }
 	     terminal.writeCenter("-- press [enter] to start --",terminal.getHeightInCharacters()-1,new Color(255,0,0));
 	}
-	
+	/**
+	 * methode definit l'action prise selon le choix de l'utilisateur
+	 */
 	public Ecrant saisieUtilisateur(KeyEvent saisie)
 	{
 		switch(saisie.getKeyCode())

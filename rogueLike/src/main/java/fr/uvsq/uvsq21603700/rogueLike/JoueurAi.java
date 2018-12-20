@@ -11,6 +11,12 @@ public class JoueurAi extends CreatureAi{
 	private char _pomme;
 	private char _epe;
 
+	/**
+	 * Constructeur
+	 * @param creature la creature
+	 * @param messages le message
+	 * @param objets les objets
+	 */
     public JoueurAi(Creature creature, List<String> messages, List<Objet> objets) {
     super(creature);
     _messages = messages;
@@ -68,9 +74,9 @@ public class JoueurAi extends CreatureAi{
 
 	/**
      * Activer inteligence AI
-     * @param x
-     * @param y
-     * @return vrai ou faux
+     * @param x abscice
+     * @param y ordonnee
+     * @return vrai si le joueur a reaussi d'attaquer un adversaire et faux sinon
      */
 	public boolean attacker(int x, int y)
 	{
@@ -86,7 +92,10 @@ public class JoueurAi extends CreatureAi{
 		return false;
 		
 	}
-	
+
+	/**
+	 * permet à un creature de ramasser des objets dans le terrain
+	 */
 	public void ramasser()
 	{
 		Objet o = null;
@@ -97,7 +106,9 @@ public class JoueurAi extends CreatureAi{
     		_creature.getWorld().ramasser(o);
 		}
 	}
-	
+	/**
+	 * permet d'enregistrer l'utilisation d'une arme ou puissance
+	 */
 	public void utiliser(char c)
 	{
 		if(estDansleSac(c))

@@ -1,6 +1,9 @@
 package fr.uvsq.uvsq21603700.rogueLike;
 
-
+/**
+ * Classe représentant un combattant(personnage non joueur) contre un personnage joueur
+ *
+ */
 public class SoldaAi extends CreatureAi {
 	
 	 public SoldaAi(Creature creature)
@@ -14,7 +17,9 @@ public class SoldaAi extends CreatureAi {
 //		 mort(_creature.getVie());
 
 	 }
-
+	 /**
+	  * Déplacer un soldat sur le terrain
+	  */
 	private void seDeplacer() {
 		int mx = 0;
 		int my = 0;
@@ -45,7 +50,9 @@ public class SoldaAi extends CreatureAi {
 			
 			deplacer(mx, my, _creature.getTerWorld());
 	}
-		
+	/**
+     * Déplacer un soldat sur l'univers de jeu
+     */
 	public void deplacer(int i, int j, Terrain[][] terrain)
     {
     	int x = _creature.x+i;
@@ -60,7 +67,12 @@ public class SoldaAi extends CreatureAi {
         	_creature.y = y;
     	}
     }
-	
+	/**
+     * Activer inteligence AI
+     * @param x abscise
+     * @param y ordonne
+     * @return vrai si le joueur a reaussi d'attaquer un adversaire et faux sinon
+     */
 	public boolean attacker(int x, int y)
 	{
 		Creature ennemi = null;

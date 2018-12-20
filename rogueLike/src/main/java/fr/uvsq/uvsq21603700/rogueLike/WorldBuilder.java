@@ -1,23 +1,37 @@
 package fr.uvsq.uvsq21603700.rogueLike;
 
-
+/**
+ * Classe qui va construire le terrain avec le sol et mur
+ * 
+ *
+ */
 public class WorldBuilder{
 	
 	private Terrain[][] _terrain;
     private int _largeur;
     private int _hauteur;
-    
+    /**
+     * Le constructeur
+     * @param largeur la largeur
+     * @param hauteur la hauteur
+     */
 	public WorldBuilder(int largeur, int hauteur) {
 		_largeur = largeur;
 		_hauteur = hauteur;
 		_terrain = new Terrain[largeur][hauteur];
 	}
-	
+	/**
+	 * 
+	 * @return l'univers de jeu 
+	 */
 	public World construire() {
 		//randomTerrain();
 		return new World(_terrain);
 	}
-	
+	/**
+	 * 
+	 * @return l'univers de jeu avec des elements du terrain positionnes aleatoirement
+	 */
 	private WorldBuilder randomTerrain() {
 		for (int x = 0; x < _largeur; x++) {
 			for (int y = 0; y < _hauteur; y++) {
@@ -26,7 +40,11 @@ public class WorldBuilder{
 		}
 		return this;
 	}
-	
+	/**
+	 * construire le mur et le sol
+	 * @param times
+	 * 
+	 */
 	private WorldBuilder lissage(int times) {
         Terrain[][] terrain = new Terrain[_largeur][_hauteur];
         for (int time = 0; time < times; time++) {

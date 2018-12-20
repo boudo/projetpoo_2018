@@ -165,11 +165,11 @@
       <scope>test</scope>
     </dependency>
     
-    <dependency>
+  <!--   <dependency>
   		<groupId>net.trystan</groupId>
   		<artifactId>ascii-panel</artifactId>
   		<version>1.2-SNAPSHOT</version>
-	</dependency>
+	</dependency>   --> 
     
     <dependency>
        <groupId>org.hamcrest</groupId>
