@@ -151,6 +151,15 @@ public class ecrantJouer implements Ecrant {
       case KeyEvent.VK_W: _player.deplacer(-1, 1); break;
       case KeyEvent.VK_X: _player.deplacer( 1, 1); break;
       case KeyEvent.VK_R: _player.ramasser1(); break;
+	  case KeyEvent.VK_M: try {
+				save_world();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} break;
       
 //      default : return this;
       }
