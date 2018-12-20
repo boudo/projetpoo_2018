@@ -5,60 +5,95 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 
 public class SavedGame {
 	public World world;
-	public int centerX;
-	public int centerY;
-	public int width;
-	public int getWidth() { return width; }
-	public int height;
-	public int getHeight() { return height; }
-	public SavedGame(World world, int centerX, int centerY, int width, int height) {
+
+	public SavedGame(World world) {
 		this.world = world;
-		this.centerX = centerX;
-		this.centerY = centerY;
-		this.width = width;
-		this.height = height;
+
 	}
-		public SavedGame() {
-			this.world = null;
-			this.centerX = 0;
-			this.centerY = 0;
-			this.width = 0;
-			this.height = 0;
-		}
 	
-			public void SaveGame(String name) throws FileNotFoundException, UnsupportedEncodingException{
+	public void SaveGame(String name) throws FileNotFoundException, UnsupportedEncodingException{
 	
 		String path = System.getProperty("user.home") + File.separator + ".savedRlGames" + File.separator + name;
 		System.out.println("saved to: " + path);
-		File f = new File(path);
-		if(!f.getParentFile().isDirectory())
-			f.getParentFile().mkdirs();
-		if(f.exists()) {
-			throw new FileNotFoundException();
-		}
-		PrintWriter writer = new PrintWriter(path, "UTF-8");
-		writer.print(width+" "+height+"\n");
-		writer.print(centerX+" "+centerY+"\n");
-		for(int i=0; i<width; i++) {
-			for(int j=0; j<height; j++) {
-				writer.print(world.glyph(i, j)+" ");
+//		File f = new File(path);
+//		if(!f.getParentFile().isDirectory())
+//			f.getParentFile().mkdirs();
+//		if(f.exists()) {
+//			throw new FileNotFoundException();
+//		}
+//		try {
+//		f.createNewFile();
+//		FileWriter fw = new FileWriter(f);
+//		//PrintWriter writer = new PrintWriter(path, "UTF-8");
+//		//writer.print(this.world.getLargeur()+" "+this.world.getHauteur()+"\n");
+//		for(int i=0; i<this.world.getHauteur(); i++) {
+//			for(int j=0; j<this.world.getLargeur(); j++) {
+//				//writer.print(world.elemenTerrain(i, j).getSymbole()+" ");
+//				fw.write(world.elemenTerrain(i, j).getSymbole()+" ");
+//				System.out.println(world.elemenTerrain(i, j).getSymbole());
+//			}
+//			//writer.print("\n");
+//			fw.write("\n");
+//			System.out.println("\n");
+//		}
+//		//writer.close();
+//		fw.close();
+//		}catch(Exception e)
+//		{
+//			System.out.println(e.getMessage());
+//		}
+		
+		try {
+		File fichier = new File(path);
+		fichier.createNewFile();
+		FileWriter fw = new FileWriter(fichier);
+		
+		fw.write(world.getLargeur()); fw.write(" "); fw.write(world.getHauteur()+"\n");
+		List<Creature> lCreature = null;
+		lCreature = world.getListCreature();
+		for(int t=0; t<lCreature.size(); t++)
+		{
+			if(lCreature.get(t).getSymbole() == '@')
+			{
+				fw.write("P "+lCreature.get(t).description()+"\n");
 			}
-			writer.print("\n");
+			else if(lCreature.get(t).getSymbole() == 'b')
+			{
+				fw.write("C "+lCreature.get(t).description()+"\n");
+			}
+			else if(lCreature.get(t).getSymbole() == 'f')
+			{
+				fw.write("C "+lCreature.get(t).description()+"\n");
+			}
 		}
-		writer.close();
+		for(int y=0; y<world.getHauteur(); y++)
+		{
+			for(int x=0; x<world.getLargeur(); x++)
+			{
+				fw.write(world.elemenTerrain(x, y).getSymbole());
+			}
+			fw.write("\n");
+		}
+		fw.close();
+		}catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
 	}
 	
-		public void update(int centerX, int centerY) {
-		this.centerX = centerX;
-		this.centerY = centerY;
-	}
+//		public void update(int centerX, int centerY) {
+//		this.centerX = centerX;
+//		this.centerY = centerY;
+//	}
 	
 	public SavedGame loadGame(String path) throws IOException {
 		Terrain[][] tiles = null;
@@ -82,7 +117,7 @@ public class SavedGame {
 			}
 			
 			for(int i=0; i<height; i++) {
-		 System.out.println("je remplie la ligne "+i);
+		 System.out.println("je remplie la ligne "+i);// TODO Auto-generated catch block
 				if((line = br.readLine())!=null) {
 					String[] s = line.split(" ");
 					for(int j=0; j<width; j++) {
@@ -99,7 +134,7 @@ public class SavedGame {
 			}
 		   System.out.println("J'ai tout fini");
            br.close();
-		   return new SavedGame(new World(tiles), cX,cY, width, height);
+		   return new SavedGame(new World(tiles));
 	}
 		
 

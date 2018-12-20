@@ -165,6 +165,11 @@ public class Creature {
 		
 	}
 
+	public String description() {
+		return x+" "+y+" "+_symbole+" "+_nom+" "+_couleur.getRed()+
+				" "+_couleur.getGreen()+" "+_couleur.getBlue()+" "+_maxVie+" "+_vie+" "+_attackValue+" "+_defenseValue;
+	}
+
 
 
 

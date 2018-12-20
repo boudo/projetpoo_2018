@@ -2,6 +2,8 @@ package fr.uvsq.uvsq21603700.rogueLike.ecrants;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import fr.uvsq.uvsq21603700.rogueLike.*;
@@ -14,6 +16,7 @@ import fr.uvsq.uvsq21603700.rogueLike.asciiPanel.*;
 
 public class ecrantJouer implements Ecrant {
 	private World _world;
+	private SavedGame _save;
 	private Creature _player;
 	private Objet _porte;
     private int _largeur;
@@ -27,6 +30,7 @@ public class ecrantJouer implements Ecrant {
     {
     	_largeur = 205;
     	_hauteur = 64;
+    	_save = null;
     	_messages = new ArrayList<String>();
     	_objets = new ArrayList<Objet>();
     	creerWorld();
@@ -136,9 +140,9 @@ public class ecrantJouer implements Ecrant {
 
 	
 	
-		public void save_world() throws FileNotFoundException, UnsupportedEncodingException {
-		_save=new SavedGame(_world,10,10,_world.getLargeur(),_world.getHauteur());
-	    _save.SaveGame("Saved_game");
+	public void save_world() throws FileNotFoundException, UnsupportedEncodingException {
+		_save = new SavedGame(_world);
+	    _save.SaveGame("Saved_game1");
 	}
 	
 	/**
@@ -193,12 +197,10 @@ public class ecrantJouer implements Ecrant {
 	  case KeyEvent.VK_M: try {
 				save_world();
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} break;
+			} return this;
 
       
 //      default : return this;

@@ -187,9 +187,9 @@ public class World {
 
     public char glyph(int x, int y){
     	if(creature(x,y) != null)
-    		return creature(x,y).symbole();
-    	if(objet(x, y) != null)
-    		return objet(x,y).symbole();
+    		return creature(x,y).getSymbole();
+    	if(getObjet(x, y) != null)
+    		return getObjet(x,y).getSymbole();
         return elemenTerrain(x,y).getSymbole();
 }
 	
